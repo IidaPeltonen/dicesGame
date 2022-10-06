@@ -1,24 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Text, View, Pressable } from 'react-native'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
-import styles from '../styles/style'
+import styles from '../style/style'
 
 let board = []
 const NBR_OF_DICES = 5
 const NBR_OF_THROWS = 5
 const WINNING_POINTS = 23
-
-const row = []
-for (let i=0; i < NBR_OF_DICES; i++) {
-  row.push(
-    <MaterialCommunityIcons
-      name= {board[i]}
-      key={'row' + 1}
-      size={50}
-      color={'steelblue'}>
-    </MaterialCommunityIcons>
-  )
-}
 
 export default function Gameboard () {
   const [nbrOfThrowsLeft, setNbrOfThrowsLeft] = useState(NBR_OF_THROWS )
@@ -26,11 +14,23 @@ export default function Gameboard () {
   const [sum, setSum] = useState(0)
   const [status, setStatus] = useState('')
 
+  const row = []
+for (let i = 0; i < NBR_OF_DICES; i++) {
+  row.push(
+    <MaterialCommunityIcons
+      name= {board[i]}
+      key={"row" + i}
+      size={50}
+      color={'steelblue'}>
+    </MaterialCommunityIcons>
+  )
+}
+
   function throwDices () {
     let sum = 0
     for (let i = 0; i < NBR_OF_DICES; i++) {
       let randomNumber = Math.floor(Math.random() * 6 + 1)
-      board[i] = 'dice' + randomNumber
+      board[i] = 'dice-' + randomNumber
       sum += randomNumber
     }
     setNbrOfThrowsLeft(nbrOfThrowsLeft-1)
