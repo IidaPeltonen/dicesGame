@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Text, View, Pressable } from 'react-native'
-import MaterialCommunityIcons from '@expo/vector-icons'
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 import styles from '../styles/style'
 
 let board = []
